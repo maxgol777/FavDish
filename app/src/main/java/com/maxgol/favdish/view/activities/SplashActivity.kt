@@ -1,4 +1,4 @@
-package com.maxgol.favdish
+package com.maxgol.favdish.view.activities
 
 import android.content.Intent
 import android.os.Build
@@ -11,6 +11,7 @@ import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.maxgol.favdish.databinding.ActivitySplashBinding
 import android.os.Handler
+import com.maxgol.favdish.R
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

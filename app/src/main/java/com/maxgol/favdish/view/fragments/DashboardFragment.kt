@@ -1,4 +1,4 @@
-package com.maxgol.favdish.ui.dashboard
+package com.maxgol.favdish.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.maxgol.favdish.R
+import com.maxgol.favdish.viewmodel.DashboardViewModel
 
 class DashboardFragment : Fragment() {
 
