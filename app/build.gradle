@@ -54,4 +54,7 @@ dependencies {
 
     // intuit
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
+    // dexter
+    implementation 'com.karumi:dexter:6.2.3'
 }
