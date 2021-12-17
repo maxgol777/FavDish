@@ -8,6 +8,4 @@ import com.maxgol.favdish.model.entities.FavDish
 interface FavDishDao {
     @Insert
     suspend fun insertFavDishDetails(favDish: FavDish)
-
-
 }
