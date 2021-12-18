@@ -16,7 +16,9 @@ import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -36,11 +38,15 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.karumi.dexter.listener.single.PermissionListener
 import com.maxgol.favdish.R
+import com.maxgol.favdish.application.FavDishApplication
 import com.maxgol.favdish.databinding.ActivityAddUpdateDishBinding
 import com.maxgol.favdish.databinding.DialogCustomImageSelectionBinding
 import com.maxgol.favdish.databinding.DialogCustomListBinding
+import com.maxgol.favdish.model.entities.FavDish
 import com.maxgol.favdish.utils.Constants
 import com.maxgol.favdish.view.adapters.CustomListItemAdapter
+import com.maxgol.favdish.viewmodel.FavDishViewModel
+import com.maxgol.favdish.viewmodel.FavDishViewModelFactory
 import java.io.*
 import java.util.*
 
@@ -48,6 +54,10 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var mBinding: ActivityAddUpdateDishBinding
     private var mImagePath: String = ""
     private lateinit var mCustomListDialog: Dialog
+
+    private val mFavDishViewModel: FavDishViewModel by viewModels {
+        FavDishViewModelFactory((application as FavDishApplication).repository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,30 +108,48 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 R.id.btn_add_dish -> {
-                    val title = mBinding.etTitle.text.toString().trim { it <= ' ' }
-                    val type = mBinding.etType.text.toString().trim { it <= ' ' }
-                    val category = mBinding.etCategory.text.toString().trim { it <= ' ' }
-                    val ingredients = mBinding.etIngredients.text.toString().trim { it <= ' ' }
-                    val cookingTimeInMinutes =
-                        mBinding.etCookingTime.text.toString().trim { it <= ' ' }
-                    val cookingDirection =
-                        mBinding.etDirectionToCook.text.toString().trim { it <= ' ' }
+                    val title = mBinding.etTitle.prepareText()
+                    val type = mBinding.etType.prepareText()
+                    val category = mBinding.etCategory.prepareText()
+                    val ingredients = mBinding.etIngredients.prepareText()
+                    val cookingTimeInMinutes = mBinding.etCookingTime.prepareText()
+                    val cookingDirection = mBinding.etDirectionToCook.prepareText()
 
-                    val messageId = when {
-                        mImagePath.isEmpty() -> R.string.err_msg_select_dish_image
-                        title.isEmpty() -> R.string.err_msg_select_dish_title
-                        type.isEmpty() -> R.string.err_msg_select_dish_type
-                        category.isEmpty() -> R.string.err_msg_select_dish_category
-                        ingredients.isEmpty() -> R.string.err_msg_select_dish_ingredients
-                        cookingTimeInMinutes.isEmpty() -> R.string.err_msg_select_cooking_time
-                        cookingDirection.isEmpty() -> R.string.err_msg_select_dish_cooking_direction
-                        else -> R.string.all_entries_are_valid
+                    val (messageId, shouldFinishActivity) = when {
+                        mImagePath.isEmpty() -> R.string.err_msg_select_dish_image to false
+                        title.isEmpty() -> R.string.err_msg_select_dish_title to false
+                        type.isEmpty() -> R.string.err_msg_select_dish_type to false
+                        category.isEmpty() -> R.string.err_msg_select_dish_category to false
+                        ingredients.isEmpty() -> R.string.err_msg_select_dish_ingredients to false
+                        cookingTimeInMinutes.isEmpty() -> R.string.err_msg_select_cooking_time to false
+                        cookingDirection.isEmpty() -> R.string.err_msg_select_dish_cooking_direction to false
+                        else -> {
+                            val favDishDetails = FavDish(
+                                image = mImagePath,
+                                imageSource = Constants.DISH_IMAGE_SOURCE_LOCAL,
+                                title = title,
+                                type = type,
+                                category = category,
+                                ingredients = ingredients,
+                                cookingTime = cookingTimeInMinutes,
+                                directionToCook = cookingDirection,
+                                favoriteDish = false
+                            )
+                            mFavDishViewModel.insert(favDishDetails)
+                            Log.i("Insertion", "Success")
+                            R.string.all_entries_are_valid to true
+                        }
                     }
                     showErrorToast(messageId)
+                    if (shouldFinishActivity) {
+                        finish()
+                    }
                 }
             }
         }
     }
+
+    private fun EditText.prepareText() = text.toString().trim { it <= ' ' }
 
     private fun showErrorToast(messageId: Int) {
         Toast.makeText(
