@@ -34,4 +34,5 @@
     <string name="err_msg_select_cooking_time">Select cooking time</string>
     <string name="err_msg_select_dish_cooking_direction">Select cooking direction</string>
     <string name="all_entries_are_valid">All entries are valid</string>
+    <string name="label_no_dishes_added_yet">no dishes added yet</string>
 </resources>
