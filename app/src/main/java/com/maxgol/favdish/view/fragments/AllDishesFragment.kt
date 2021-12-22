@@ -12,6 +12,7 @@ import com.maxgol.favdish.R
 import com.maxgol.favdish.application.FavDishApplication
 import com.maxgol.favdish.databinding.FragmentAllDishesBinding
 import com.maxgol.favdish.view.activities.AddUpdateDishActivity
+import com.maxgol.favdish.view.activities.MainActivity
 import com.maxgol.favdish.view.adapters.FavDishAdapter
 import com.maxgol.favdish.viewmodel.FavDishViewModel
 import com.maxgol.favdish.viewmodel.FavDishViewModelFactory
@@ -65,8 +66,14 @@ class AllDishesFragment : Fragment() {
         })
     }
 
-    fun dishDetails(){
+    fun dishDetails() {
         findNavController().navigate(AllDishesFragmentDirections.actionNavigationAllDishesToNavigationDishDetails())
+        (requireActivity() as? MainActivity)?.hideBottomNavigationView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (requireActivity() as? MainActivity)?.showBottomNavigationView()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
