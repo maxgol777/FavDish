@@ -3,6 +3,7 @@
     <string name="title_all_dishes">All Dishes</string>
     <string name="title_favorite_dishes">Favorite</string>
     <string name="title_random_dish">Random dish</string>
+    <string name="title_dish_details">Dish details</string>
 
     <string name="splash_screen_title">Fav Dish</string>
 
@@ -35,4 +36,6 @@
     <string name="err_msg_select_dish_cooking_direction">Select cooking direction</string>
     <string name="all_entries_are_valid">All entries are valid</string>
     <string name="label_no_dishes_added_yet">no dishes added yet</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="dish_details_fragment_layout">Dish Details Fragment Layout</string>
 </resources>
