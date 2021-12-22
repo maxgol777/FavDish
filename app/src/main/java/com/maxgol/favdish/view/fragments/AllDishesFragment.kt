@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.maxgol.favdish.R
 import com.maxgol.favdish.application.FavDishApplication
 import com.maxgol.favdish.databinding.FragmentAllDishesBinding
+import com.maxgol.favdish.model.entities.FavDish
 import com.maxgol.favdish.view.activities.AddUpdateDishActivity
 import com.maxgol.favdish.view.activities.MainActivity
 import com.maxgol.favdish.view.adapters.FavDishAdapter
@@ -66,8 +67,12 @@ class AllDishesFragment : Fragment() {
         })
     }
 
-    fun dishDetails() {
-        findNavController().navigate(AllDishesFragmentDirections.actionNavigationAllDishesToNavigationDishDetails())
+    fun dishDetails(favDish: FavDish) {
+        findNavController().navigate(
+            AllDishesFragmentDirections.actionNavigationAllDishesToNavigationDishDetails(
+                favDish
+            )
+        )
         (requireActivity() as? MainActivity)?.hideBottomNavigationView()
     }
 

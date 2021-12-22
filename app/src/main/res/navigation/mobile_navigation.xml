@@ -9,7 +9,7 @@
         android:id="@+id/navigation_all_dishes"
         android:name="com.maxgol.favdish.view.fragments.AllDishesFragment"
         android:label="@string/title_all_dishes"
-        tools:layout="@layout/fragment_all_dishes" >
+        tools:layout="@layout/fragment_all_dishes">
         <action
             android:id="@+id/action_navigation_all_dishes_to_navigation_dish_details"
             app:destination="@id/navigation_dish_details" />
@@ -31,5 +31,9 @@
         android:id="@+id/navigation_dish_details"
         android:name="com.maxgol.favdish.view.fragments.DishDetailsFragment"
         android:label="@string/title_dish_details"
-        tools:layout="@layout/fragment_random_dish" />
+        tools:layout="@layout/fragment_dish_details">
+        <argument
+            android:name="dishDetails"
+            app:argType="com.maxgol.favdish.model.entities.FavDish" />
+    </fragment>
 </navigation>
