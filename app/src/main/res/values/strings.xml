@@ -1,16 +1,14 @@
 <resources>
     <string name="app_name">FavDish</string>
+
     <string name="title_all_dishes">All Dishes</string>
     <string name="title_favorite_dishes">Favorite</string>
-    <string name="title_random_dish">Random dish</string>
-    <string name="title_dish_details">Dish details</string>
+    <string name="title_random_dish">Random Dish</string>
 
     <string name="splash_screen_title">Fav Dish</string>
 
     <string name="action_add_dish">Add Dish</string>
 
-    <!--TODO Step 3: Add the string values in the strings.xml file.-->
-    <!--START-->
     <string name="image_contentDescription">image</string>
     <string name="lbl_title">Title</string>
     <string name="lbl_type">Type</string>
@@ -19,23 +17,36 @@
     <string name="lbl_cooking_time_in_minutes">Cooking Time In Minutes</string>
     <string name="lbl_direction_to_cook">Direction To Cook</string>
     <string name="lbl_add_dish">ADD DISH</string>
+
     <string name="title_select_image">Select Image Action</string>
     <string name="lbl_camera">Camera</string>
     <string name="lbl_gallery">Gallery</string>
-    <!--END-->
 
     <string name="title_select_dish_type">SELECT DISH TYPE</string>
     <string name="title_select_dish_category">SELECT DISH CATEGORY</string>
     <string name="title_select_dish_cooking_time">SELECT COOKING TIME IN MINUTES</string>
-    <string name="err_msg_select_dish_image">Select dish image</string>
+
+    <string name="err_msg_select_dish_image">Select dish image.</string>
+    <string name="err_msg_enter_dish_title">Enter dish title.</string>
+    <string name="err_msg_select_dish_type">Select dish type.</string>
+    <string name="err_msg_select_dish_category">Select dish category.</string>
+    <string name="err_msg_enter_dish_ingredients">Enter dish ingredients.</string>
+    <string name="err_msg_select_dish_cooking_time">Select dish cooking time.</string>
+    <string name="err_msg_enter_dish_cooking_instructions">Enter dish cooking instructions.</string>
+
+
     <string name="err_msg_select_dish_title">Enter dish title</string>
-    <string name="err_msg_select_dish_type">Select dish type</string>
-    <string name="err_msg_select_dish_category">Select dish category</string>
     <string name="err_msg_select_dish_ingredients">Select dish ingredients</string>
     <string name="err_msg_select_cooking_time">Select cooking time</string>
     <string name="err_msg_select_dish_cooking_direction">Select cooking direction</string>
     <string name="all_entries_are_valid">All entries are valid</string>
-    <string name="label_no_dishes_added_yet">no dishes added yet</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="dish_details_fragment_layout">Dish Details Fragment Layout</string>
+
+
+    <string name="title_dish_details">Dish Details</string>
+    <string name="label_no_dishes_added_yet">No dishes added yet</string>
+
+    <!-- TODO Step 6: Add the string value to the strings.xml-->
+    <!--START-->
+    <string name="lbl_estimate_cooking_time">The approx time required to cook the dish is %1$s minutes.</string>
+    <!--END-->
 </resources>
