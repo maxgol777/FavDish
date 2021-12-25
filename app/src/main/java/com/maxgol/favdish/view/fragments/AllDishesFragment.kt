@@ -18,7 +18,7 @@ import com.maxgol.favdish.view.adapters.FavDishAdapter
 import com.maxgol.favdish.viewmodel.FavDishViewModel
 import com.maxgol.favdish.viewmodel.FavDishViewModelFactory
 
-class AllDishesFragment : Fragment() {
+class AllDishesFragment : Fragment(), DishDetails {
 
     private lateinit var mBinding: FragmentAllDishesBinding
 
@@ -36,13 +36,6 @@ class AllDishesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        homeViewModel =
-//            ViewModelProvider(this).get(HomeViewModel::class.java)
-//        val root = inflater.inflate(R.layout.fragment_all_dishes, container, false)
-//        val textView: TextView = root.findViewById(R.id.text_home)
-//        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
         mBinding = FragmentAllDishesBinding.inflate(inflater, container, false)
         return mBinding.root
     }
@@ -67,10 +60,10 @@ class AllDishesFragment : Fragment() {
         })
     }
 
-    fun dishDetails(favDish: FavDish) {
+    override fun dishDetails(dish: FavDish) {
         findNavController().navigate(
             AllDishesFragmentDirections.actionNavigationAllDishesToNavigationDishDetails(
-                favDish
+                dish
             )
         )
         (requireActivity() as? MainActivity)?.hideBottomNavigationView()

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.maxgol.favdish.databinding.ItemDishLayoutBinding
 import com.maxgol.favdish.model.entities.FavDish
-import com.maxgol.favdish.view.fragments.AllDishesFragment
+import com.maxgol.favdish.view.fragments.DishDetails
 
 class FavDishAdapter(private val fragment: Fragment) :
     RecyclerView.Adapter<FavDishAdapter.ViewHolder>() {
@@ -29,7 +29,7 @@ class FavDishAdapter(private val fragment: Fragment) :
             .into(holder.ivDishImage)
 
         holder.itemView.setOnClickListener {
-            if (fragment is AllDishesFragment) {
+            if (fragment is DishDetails) {
                 fragment.dishDetails(dish)
             }
         }
