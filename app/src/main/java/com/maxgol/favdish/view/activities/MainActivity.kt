@@ -38,12 +38,12 @@ class MainActivity : AppCompatActivity() {
         return NavigationUI.navigateUp(mNavController, null)
     }
 
-    fun hideBottomNavigationView() {
+    fun showBottomNavigationView() {
         mBinding.navView.clearAnimation()
         mBinding.navView.animate().translationY(0F).duration = 300
     }
 
-    fun showBottomNavigationView() {
+    fun hideBottomNavigationView() {
         mBinding.navView.clearAnimation()
         mBinding.navView.animate().translationY(mBinding.navView.height.toFloat()).duration = 300
     }
