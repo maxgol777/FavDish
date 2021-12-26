@@ -41,6 +41,8 @@
     <string name="err_msg_select_dish_cooking_direction">Select cooking direction</string>
     <string name="all_entries_are_valid">All entries are valid</string>
 
+    <string name="successfully_added">Successfully added your favorite dish details</string>
+    <string name="successfully_updated">"You successfully updated your favorite dish details"</string>
 
     <string name="title_dish_details">Dish Details</string>
     <string name="label_no_dishes_added_yet">No dishes added yet</string>
@@ -50,5 +52,10 @@
     <string name="lbl_estimate_cooking_time">The approx time required to cook the dish is %1$s minutes.</string>
     <string name="msg_added_to_favorites">You have added the dish to your favorites.</string>
     <string name="msg_removed_from_favorite">You have removed the dish from favorites.</string>
+    <string name="action_edit_dish">EDIT DISH</string>
+    <string name="action_delete_dish">DELETE  DISH</string>
+    <string name="title_edit_dish">Edit dish</string>
+    <string name="title_add_dish">Add dish</string>
+    <string name="lbl_update_dish">Update dish</string>
     <!--END-->
 </resources>
