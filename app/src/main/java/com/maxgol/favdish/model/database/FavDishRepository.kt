@@ -6,6 +6,9 @@ import kotlinx.coroutines.flow.Flow
 
 class FavDishRepository(private val favDishDao: FavDishDao) {
 
+    val allDishesList: Flow<List<FavDish>> = favDishDao.getAllDishesList()
+    val favoriteDishes: Flow<List<FavDish>> = favDishDao.getFavoriteDishesList()
+
     @WorkerThread
     suspend fun insertFavDishData(favDish: FavDish) {
         favDishDao.insertFavDishDetails(favDish)
@@ -21,7 +24,6 @@ class FavDishRepository(private val favDishDao: FavDishDao) {
         favDishDao.deleteFavDish(favDish)
     }
 
-    val allDishesList: Flow<List<FavDish>> = favDishDao.getAllDishesList()
-
-    val favoriteDishes: Flow<List<FavDish>> = favDishDao.getFavoriteDishesList()
+    fun filteredListDishes(value: String): Flow<List<FavDish>> =
+        favDishDao.getFilteredDishesList(value)
 }

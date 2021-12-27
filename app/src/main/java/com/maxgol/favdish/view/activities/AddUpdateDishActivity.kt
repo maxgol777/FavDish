@@ -404,7 +404,12 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
         val binding = DialogCustomListBinding.inflate(layoutInflater).apply {
             tvTitle.text = title
             rvList.layoutManager = LinearLayoutManager(this@AddUpdateDishActivity)
-            rvList.adapter = CustomListItemAdapter(this@AddUpdateDishActivity, itemsList, selection)
+            rvList.adapter =
+                CustomListItemAdapter(
+                    activity = this@AddUpdateDishActivity,
+                    listItems = itemsList,
+                    selection = selection
+                )
         }
         mCustomListDialog = Dialog(this).apply { setContentView(binding.root) }
         mCustomListDialog.show()

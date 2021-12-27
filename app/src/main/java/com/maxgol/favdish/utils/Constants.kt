@@ -9,6 +9,8 @@ object Constants {
     const val DISH_IMAGE_SOURCE_ONLINE = "Online"
     const val EXTRA_DISH_DETAILS = "DishDetails"
 
+    const val ALL_ITEMS: String = "ALL"
+    const val FILTER_SELECTION: String = "FilterSelection"
 
     fun dishTypes(): ArrayList<String> = arrayListOf(
         "breakfast",
