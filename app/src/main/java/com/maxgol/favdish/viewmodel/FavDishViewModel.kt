@@ -6,17 +6,21 @@ import com.maxgol.favdish.model.entities.FavDish
 import kotlinx.coroutines.launch
 
 class FavDishViewModel(private val repository: FavDishRepository) : ViewModel() {
+
+    val allDishesList: LiveData<List<FavDish>> = repository.allDishesList.asLiveData()
+    val favoriteDishes: LiveData<List<FavDish>> = repository.favoriteDishes.asLiveData()
+
     fun insert(dish: FavDish) = viewModelScope.launch {
         repository.insertFavDishData(dish)
     }
-
-    val allDishesList: LiveData<List<FavDish>> = repository.allDishesList.asLiveData()
 
     fun update(dish: FavDish) = viewModelScope.launch {
         repository.updateFavDishData(dish)
     }
 
-    val favoriteDishes: LiveData<List<FavDish>> = repository.favoriteDishes.asLiveData()
+    fun delete(dish: FavDish) = viewModelScope.launch {
+        repository.deleteFavDishData(dish)
+    }
 }
 
 @Suppress("UNCHECKED_CAST")

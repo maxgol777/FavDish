@@ -1,7 +1,6 @@
 package com.maxgol.favdish.view.adapters
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +14,7 @@ import com.maxgol.favdish.model.entities.FavDish
 import com.maxgol.favdish.utils.Constants
 import com.maxgol.favdish.view.activities.AddUpdateDishActivity
 import com.maxgol.favdish.view.fragments.AllDishesFragment
+import com.maxgol.favdish.view.fragments.DeleteDishAction
 import com.maxgol.favdish.view.fragments.DishDetails
 import com.maxgol.favdish.view.fragments.FavoriteDishesFragment
 
@@ -56,7 +56,7 @@ class FavDishAdapter(private val fragment: Fragment) :
                         fragment.requireActivity().startActivity(intent)
                     }
                     R.id.action_delete_dish -> {
-                        Log.i("You have clicked on", "Delete option of ${dish.title}")
+                        (fragment as? DeleteDishAction)?.deleteDish(dish)
                     }
                 }
                 true
