@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--TODO Step 2: Design the layout for Random Dish details as below. It is similar to dish details but I have added the same design in our case to keep it simple.-->
+<?xml version="1.0" encoding="utf-8"?><!--TODO Step 2: Design the layout for Random Dish details as below. It is similar to dish details but I have added the same design in our case to keep it simple.-->
 <!--START-->
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/srl_random_dish"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.fragments.RandomDishFragment">
@@ -138,5 +138,4 @@
                 tools:text="@string/lbl_estimate_cooking_time" />
         </RelativeLayout>
     </ScrollView>
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-<!--END-->
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout><!--END-->
