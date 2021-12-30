@@ -21,12 +21,12 @@ object Constants {
     const val LIMIT_LICENSE_VALUE: Boolean = true
 
     const val TAGS: String = "tags"
-    const val TAGS_VALUE: String = "vegetarian, dessert"
+    const val TAGS_VALUE: String = "vegetarian,dessert"
 
     const val NUMBER: String = "number"
     const val NUMBER_VALUE: Int = 1
 
-    const val BASE_URL = "https://spoonacular.com/"
+    const val BASE_URL = "https://api.spoonacular.com/"
 
     fun dishTypes(): ArrayList<String> = arrayListOf(
         "breakfast",

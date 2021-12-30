@@ -15,7 +15,7 @@ class RandomDishViewModel : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
 
-    private val loadRandomDish = MutableLiveData<Boolean>()
+    val loadRandomDish = MutableLiveData<Boolean>()
     val randomDishResponse = MutableLiveData<RandomDish.Recipes>()
     val randomDishLoadingError = MutableLiveData<Boolean>()
 
