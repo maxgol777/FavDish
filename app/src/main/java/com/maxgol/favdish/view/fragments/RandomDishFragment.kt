@@ -2,7 +2,6 @@ package com.maxgol.favdish.view.fragments
 
 import android.app.Dialog
 import android.os.Bundle
-import android.text.Html
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +18,7 @@ import com.maxgol.favdish.databinding.FragmentRandomDishBinding
 import com.maxgol.favdish.model.entities.FavDish
 import com.maxgol.favdish.model.entities.RandomDish
 import com.maxgol.favdish.utils.Constants
+import com.maxgol.favdish.utils.Constants.getFromHtml
 import com.maxgol.favdish.viewmodel.FavDishViewModel
 import com.maxgol.favdish.viewmodel.FavDishViewModelFactory
 import com.maxgol.favdish.viewmodel.RandomDishViewModel
@@ -113,16 +113,7 @@ class RandomDishFragment : Fragment() {
             tvType.text = dishType
             tvCategory.text = "Other"
             tvIngredients.text = ingredients
-            tvCookingDirection.text =
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                    Html.fromHtml(
-                        recipe.instructions,
-                        Html.FROM_HTML_MODE_COMPACT
-                    )
-                } else {
-                    @Suppress("DEPRECATION")
-                    Html.fromHtml(recipe.instructions)
-                }
+            tvCookingDirection.text = recipe.instructions.getFromHtml()
             tvCookingTime.text = resources.getString(
                 R.string.lbl_estimate_cooking_time,
                 recipe.readyInMinutes.toString()
