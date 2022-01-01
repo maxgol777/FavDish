@@ -1,5 +1,6 @@
 package com.maxgol.favdish.view.fragments
 
+import android.app.Dialog
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
@@ -31,6 +32,7 @@ class RandomDishFragment : Fragment() {
 
     private var mBinding: FragmentRandomDishBinding? = null
     var addedToFavorites = false
+    private var mProgressDialog: Dialog? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +41,17 @@ class RandomDishFragment : Fragment() {
     ): View {
         mBinding = FragmentRandomDishBinding.inflate(inflater, container, false)
         return mBinding!!.root
+    }
+
+    private fun showCustomProgressDialog() {
+        mProgressDialog = Dialog(requireContext()).apply {
+            setContentView(R.layout.dialog_custom_progress)
+            show()
+        }
+    }
+
+    private fun hideProgressDialog() {
+        mProgressDialog?.dismiss()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -69,6 +82,11 @@ class RandomDishFragment : Fragment() {
 
         loadRandomDish.observe(viewLifecycleOwner) { loadRandomDish ->
             if (loadRandomDish == null) return@observe
+            if (loadRandomDish == true && !mBinding!!.srlRandomDish.isRefreshing) {
+                showCustomProgressDialog()
+            } else {
+                hideProgressDialog()
+            }
             Log.i("Random Dish Loading", "$loadRandomDish")
         }
     }
