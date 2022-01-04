@@ -30,6 +30,10 @@ object Constants {
 
     const val BASE_URL = "https://api.spoonacular.com/"
 
+    const val NOTIFICATION_ID = "FavDish_notification_id"
+    const val NOTIFICATION_NAME = "FavDish"
+    const val NOTIFICATION_CHANNEL = "FavDish_channel_01"
+
     fun dishTypes(): ArrayList<String> = arrayListOf(
         "breakfast",
         "lunch",
